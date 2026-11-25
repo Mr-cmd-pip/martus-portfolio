@@ -154,8 +154,12 @@ export const siteData = {
       ],
       screenshot: '/images/projects/mangadex-reader.png',
       screenshotAlt: 'mangadex-reader application screenshot',
-      // TODO: Add live demo URL if deployed
-      liveLinks: [],
+      liveLinks: [
+        {
+          label: 'Live Demo',
+          url: 'https://readkomi.vercel.app/',
+        },
+      ],
     },
     {
       id: 'digihealth',
