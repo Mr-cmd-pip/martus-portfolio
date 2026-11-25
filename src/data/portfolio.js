@@ -246,40 +246,40 @@ export const siteData = {
       issuer: 'CodeChum',
       // TODO: Add completion date (e.g. '2024') if you want it displayed
       issuedDate: null,
-      // TODO: Add credential verification URL if available
-      credentialUrl: null,
+      credentialUrl:
+        'https://drive.google.com/file/d/1XnJaxuBZxpDH4wBEPZwq_7Cz0-KolWR-/view?usp=sharing',
     },
     {
       title: 'AWS Academy: Cloud Foundations',
       issuer: 'AWS Academy',
       // TODO: Add completion date if desired
       issuedDate: null,
-      // TODO: Add Credly / verification URL if available
-      credentialUrl: null,
+      credentialUrl:
+        'https://www.credly.com/badges/d226a37d-824e-4da5-806d-374ac1359b23/public_url',
     },
     {
       title: 'AWS Academy: Cloud Architecting',
       issuer: 'AWS Academy',
       // TODO: Add completion date if desired
       issuedDate: null,
-      // TODO: Add Credly / verification URL if available
-      credentialUrl: null,
+      credentialUrl:
+        'https://www.credly.com/badges/bb62bfee-a774-4d82-8bb0-a34bfc7ba101/public_url',
     },
     {
       title: 'IBM SkillsBuild: Artificial Intelligence Fundamentals',
       issuer: 'IBM SkillsBuild',
       // TODO: Add completion date if desired
       issuedDate: null,
-      // TODO: Add Credly / verification URL if available
-      credentialUrl: null,
+      credentialUrl:
+        'https://www.credly.com/badges/ce69b835-dbe0-4724-852f-4b79fa6b0268/public_url',
     },
     {
       title: 'IBM SkillsBuild: Cybersecurity Fundamentals',
       issuer: 'IBM SkillsBuild',
       // TODO: Add completion date if desired
       issuedDate: null,
-      // TODO: Add Credly / verification URL if available
-      credentialUrl: null,
+      credentialUrl:
+        'https://www.credly.com/badges/ab38ba39-53f3-4472-b031-18eb32a74a91/public_url',
     },
   ],
 
