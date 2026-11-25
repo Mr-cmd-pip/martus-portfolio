@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="color-scheme" content="light dark" />
+    <meta name="theme-color" content="#0A0A0A" />
+    <script>
+      (() => {
+        let theme = 'dark';
+        try {
+          const savedTheme = localStorage.getItem('portfolio-theme');
+          theme =
+            savedTheme === 'light' || savedTheme === 'dark'
+              ? savedTheme
+              : matchMedia('(prefers-color-scheme: light)').matches
+                ? 'light'
+                : 'dark';
+        } catch (error) {
+          console.warn('Unable to read the saved theme preference.', error);
+        }
+
+        document.documentElement.dataset.theme = theme;
+        document.querySelector('meta[name="theme-color"]').content =
+          theme === 'light' ? '#F7F8FC' : '#0A0A0A';
+      })();
+    </script>
+
+    <title>Matthew Martus — IT Student, Developer &amp; Project Manager</title>
+    <meta
+      name="description"
+      content="Portfolio of Matthew Rimar Martus, a fourth-year BS Information Technology student at Cebu Institute of Technology – University. Open to UI/UX Design, Project Management, and Software Developer internships."
+    />
+    <meta name="author" content="Matthew Rimar Martus" />
+    <meta
+      name="keywords"
+      content="Matthew Martus, Matthew Rimar Martus, CIT-U, Web Developer, UI/UX Design, Project Management, React, Django, Portfolio"
+    />
+
+    <!-- Canonical & Open Graph -->
+    <!-- TODO: Replace og:url and og:image domain with your deployed URL (e.g., https://matthewmartus.vercel.app) -->
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Matthew Martus" />
+    <meta property="og:title" content="Matthew Martus — IT Student, Developer &amp; Project Manager" />
+    <meta
+      property="og:description"
+      content="Fourth-year BSIT student at CIT-U building web apps and Discord bots. Open to UI/UX Design, Project Management, or Software Developer internships."
+    />
+    <meta property="og:url" content="https://example.com" />
+    <meta property="og:image" content="/og-preview.png" />
+    <meta property="og:image:alt" content="Matthew Martus portfolio preview" />
+
+    <!-- Twitter / X Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Matthew Martus — IT Student, Developer &amp; Project Manager" />
+    <meta
+      name="twitter:description"
+      content="Fourth-year BSIT student at CIT-U building web apps and Discord bots. Open to internships and web project collaborations."
+    />
+    <meta name="twitter:image" content="/og-preview.png" />
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+    <!-- Fonts: Manrope (headings), Inter (body), JetBrains Mono (technical labels) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Manrope:wght@500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body class="bg-[#0A0A0A] text-[#F5F5F5] antialiased selection:bg-[#647BFF]/30 selection:text-[#F5F5F5]">
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+</html>

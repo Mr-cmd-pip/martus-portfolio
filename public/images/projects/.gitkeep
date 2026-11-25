@@ -1,0 +1,3 @@
+# Place your project screenshot images in this folder (16:10 aspect ratio recommended, e.g. 1280x800).
+# Then reference them in src/data/portfolio.js, for example:
+#   screenshot: '/images/projects/mentalease.png'

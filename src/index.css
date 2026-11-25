@@ -1,0 +1,333 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --font-display: "Manrope", "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+
+  --color-canvas: #0A0A0A;
+  --color-surface: #111111;
+  --color-surface-elevated: #171717;
+  --color-border-subtle: #1F1F1F;
+  --color-border-strong: #2E2E2E;
+  --color-ink: #F5F5F5;
+  --color-muted: #929292;
+  --color-accent: #647BFF;
+}
+
+:root {
+  color-scheme: dark;
+  --bg-canvas: #0A0A0A;
+  --bg-surface: #111111;
+  --bg-elevated: #171717;
+  --border-subtle: #1F1F1F;
+  --text-ink: #F5F5F5;
+  --text-muted: #929292;
+  --accent: #647BFF;
+}
+
+:root[data-theme='light'] {
+  color-scheme: light;
+  --bg-canvas: #F7F8FC;
+  --bg-surface: #FFFFFF;
+  --bg-elevated: #EEF0F6;
+  --border-subtle: #E1E4EC;
+  --text-ink: #171B2A;
+  --text-muted: #596176;
+  --accent: #5268E8;
+}
+
+@layer base {
+  html {
+    background-color: var(--bg-canvas);
+    color: var(--text-ink);
+    font-family: var(--font-sans);
+    scroll-padding-top: 5.5rem;
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    html {
+      scroll-behavior: smooth;
+    }
+  }
+
+  body {
+    margin: 0;
+    min-height: 100dvh;
+    background-color: var(--bg-canvas);
+    color: var(--text-ink);
+    line-height: 1.6;
+    overflow-x: clip;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: var(--font-display);
+    letter-spacing: -0.025em;
+  }
+
+  /* Accessible keyboard focus indicator (WCAG 2.4.7 & 1.4.11 >= 3:1 contrast) */
+  :where(a, button, input, textarea, select, summary, [tabindex]):focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 3px;
+    border-radius: 4px;
+  }
+
+  @media (forced-colors: active) {
+    :where(a, button, input, textarea, select, summary, [tabindex]):focus-visible {
+      outline: 2px solid Highlight;
+    }
+  }
+}
+
+/* Skip link: visually hidden until keyboard focus */
+.skip-link {
+  position: fixed;
+  top: -100%;
+  left: 1rem;
+  z-index: 100;
+  padding: 0.625rem 1rem;
+  border-radius: 0.5rem;
+  background-color: #647BFF;
+  color: #0A0A0A;
+  font-size: 0.875rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: top 150ms ease-out;
+}
+
+.skip-link:focus {
+  top: 1rem;
+}
+
+/* Native CSS scrollspy with safe IntersectionObserver fallback class */
+.nav-links {
+  scroll-target-group: auto;
+}
+
+.nav-links a:is(:target-current, .is-current) {
+  color: #F5F5F5;
+}
+
+.nav-links a:is(:target-current, .is-current) .nav-indicator {
+  opacity: 1;
+  transform: scaleX(1);
+}
+
+/* Subtle architectural grid background for empty screenshot slots */
+.slot-grid {
+  background-image:
+    linear-gradient(to right, rgb(255 255 255 / 0.03) 1px, transparent 1px),
+    linear-gradient(to bottom, rgb(255 255 255 / 0.03) 1px, transparent 1px);
+  background-size: 28px 28px;
+}
+
+/* Respect reduced motion for all CSS transitions */
+@media (prefers-reduced-motion: reduce) {
+  .motion-safe-only {
+    transition: none !important;
+    animation: none !important;
+  }
+}
+
+/* Single-card project carousel track & continuous CSS order parking */
+.carousel-track {
+  display: flex;
+  gap: 1.5rem;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  overscroll-behavior-x: contain;
+  touch-action: manipulation;
+  scrollbar-width: none;
+}
+
+.carousel-track::-webkit-scrollbar {
+  display: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .carousel-track {
+    scroll-behavior: smooth;
+  }
+}
+
+.carousel-track > * {
+  flex: 0 0 100%;
+  scroll-snap-align: center;
+}
+
+/* Park first/last slides at ends so Prev/Next loop continuously without DOM cloning */
+.carousel-track > :first-child {
+  order: clamp(0, var(--current) - (var(--children-count, sibling-count()) - 3), 1);
+}
+
+.carousel-track > :last-child {
+  order: calc(-1 * clamp(0, 2 - var(--current), 1));
+}
+
+[data-theme='light'] [class~="bg-[#0A0A0A]"] {
+  background-color: var(--bg-canvas);
+}
+
+[data-theme='light'] [class~="bg-[#0A0A0A]/90"] {
+  background-color: color-mix(in srgb, var(--bg-canvas) 90%, transparent);
+}
+
+[data-theme='light'] [class~="bg-[#0D0D0D]"] {
+  background-color: var(--bg-elevated);
+}
+
+[data-theme='light'] [class~="bg-[#111111]"],
+[data-theme='light'] [class~="bg-[#121212]"] {
+  background-color: var(--bg-surface);
+}
+
+[data-theme='light'] [class~="bg-[#141414]"],
+[data-theme='light'] [class~="bg-[#161616]"] {
+  background-color: var(--bg-elevated);
+}
+
+[data-theme='light'] [class~="hover:bg-[#121212]"]:hover {
+  background-color: var(--bg-elevated);
+}
+
+[data-theme='light'] [class~="bg-[#F5F5F5]"] {
+  background-color: var(--text-ink);
+}
+
+[data-theme='light'] [class~="text-[#0A0A0A]"] {
+  color: #FFFFFF;
+}
+
+[data-theme='light'] [class~="text-[#F5F5F5]"],
+[data-theme='light'] [class~="text-[#D4D4D4]"],
+[data-theme='light'] [class~="hover:text-[#F5F5F5]"]:hover,
+[data-theme='light'] .group:hover [class~="group-hover:text-[#F5F5F5]"] {
+  color: var(--text-ink);
+}
+
+[data-theme='light'] [class~="text-[#929292]"],
+[data-theme='light'] [class~="text-[#929292]/50"],
+[data-theme='light'] [class~="text-[#929292]/75"],
+[data-theme='light'] [class~="text-[#929292]/80"],
+[data-theme='light'] [class~="text-[#929292]/90"] {
+  color: var(--text-muted);
+}
+
+[data-theme='light'] [class~="text-[#647BFF]"],
+[data-theme='light'] [class~="hover:text-[#647BFF]"]:hover,
+[data-theme='light'] .group:hover [class~="group-hover:text-[#647BFF]"] {
+  color: var(--accent);
+}
+
+[data-theme='light'] [class~="border-[#1A1A1A]"],
+[data-theme='light'] [class~="border-[#1B1B1B]"],
+[data-theme='light'] [class~="border-[#1E1E1E]"],
+[data-theme='light'] [class~="border-[#1F1F1F]"],
+[data-theme='light'] [class~="border-[#222222]"],
+[data-theme='light'] [class~="border-[#242424]"],
+[data-theme='light'] [class~="border-[#262626]"] {
+  border-color: var(--border-subtle);
+}
+
+[data-theme='light'] [class~="border-[#333333]"] {
+  border-color: #C5CAD6;
+}
+
+[data-theme='light'] [class~="border-[#647BFF]/50"],
+[data-theme='light'] [class~="border-[#647BFF]/70"],
+[data-theme='light'] [class~="hover:border-[#647BFF]/40"]:hover,
+[data-theme='light'] [class~="hover:border-[#647BFF]/45"]:hover,
+[data-theme='light'] [class~="hover:border-[#647BFF]/60"]:hover,
+[data-theme='light'] [class~="hover:border-[#647BFF]/70"]:hover {
+  border-color: var(--accent);
+}
+
+[data-theme='light'] [class~="bg-[#647BFF]"],
+[data-theme='light'] [class~="hover:bg-[#647BFF]"]:hover {
+  background-color: var(--accent);
+}
+
+[data-theme='light'] [class~="bg-[#647BFF]/10"] {
+  background-color: color-mix(in srgb, var(--accent) 10%, var(--bg-canvas));
+}
+
+[data-theme='light'] [class~="ring-[#647BFF]/50"] {
+  --tw-ring-color: color-mix(in srgb, var(--accent) 50%, transparent);
+}
+
+[data-theme='light'] [class~="ring-offset-[#0A0A0A]"] {
+  --tw-ring-offset-color: var(--bg-canvas);
+}
+
+[data-theme='light'] [class~="divide-[#1A1A1A]"] > :not(:last-child) {
+  border-color: var(--border-subtle);
+}
+
+[data-theme='light'] ::selection {
+  color: var(--text-ink);
+}
+
+.theme-toggle {
+  position: relative;
+}
+
+.theme-icon {
+  position: absolute;
+  transition:
+    opacity 240ms cubic-bezier(0.2, 0.8, 0.2, 1),
+    transform 420ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.theme-icon-sun {
+  opacity: 1;
+  transform: rotate(0) scale(1);
+}
+
+.theme-icon-moon {
+  opacity: 0;
+  transform: rotate(-70deg) scale(0.55);
+}
+
+[data-theme='light'] .theme-icon-sun {
+  opacity: 0;
+  transform: rotate(70deg) scale(0.55);
+}
+
+[data-theme='light'] .theme-icon-moon {
+  opacity: 1;
+  transform: rotate(0) scale(1);
+}
+
+@supports (view-transition-name: root) {
+  ::view-transition-old(root) {
+    animation: none;
+  }
+
+  ::view-transition-new(root) {
+    animation: theme-ripple 700ms cubic-bezier(0.22, 1, 0.36, 1) both;
+  }
+
+  @keyframes theme-ripple {
+    from {
+      clip-path: circle(0 at var(--theme-origin-x, 50%) var(--theme-origin-y, 50%));
+    }
+
+    to {
+      clip-path: circle(150vmax at var(--theme-origin-x, 50%) var(--theme-origin-y, 50%));
+    }
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .theme-icon {
+    transition: none;
+  }
+
+  ::view-transition-new(root) {
+    animation: none;
+  }
+}
+
