@@ -107,7 +107,8 @@ export default function Navbar({ theme, onThemeToggle }) {
         <button
           type="button"
           onClick={onThemeToggle}
-          aria-label={`Switch to ${theme === 'dark' ? 'light' : 'dark'} mode`}
+          aria-label="Light theme"
+          aria-pressed={theme === 'light'}
           title={`Switch to ${theme === 'dark' ? 'light' : 'dark'} mode`}
           className="theme-toggle inline-flex min-h-11 min-w-11 items-center justify-center rounded-full border border-[#1F1F1F] bg-[#111111] text-[#F5F5F5] transition-colors hover:border-[#647BFF]/60"
         >

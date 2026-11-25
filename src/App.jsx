@@ -1,5 +1,5 @@
 import { flushSync } from 'react-dom';
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import About from './components/About';
@@ -13,6 +13,7 @@ export default function App() {
   const [theme, setTheme] = useState(
     () => document.documentElement.dataset.theme === 'light' ? 'light' : 'dark'
   );
+  const fallbackTransitionTimeout = useRef(null);
 
   const toggleTheme = (event) => {
     const nextTheme = theme === 'dark' ? 'light' : 'dark';
@@ -40,12 +41,24 @@ export default function App() {
     root.style.setProperty('--theme-origin-x', `${clientX}px`);
     root.style.setProperty('--theme-origin-y', `${clientY}px`);
 
-    if (hasReducedMotion || !document.startViewTransition) {
+    if (hasReducedMotion) {
       applyTheme();
       return;
     }
 
-    document.startViewTransition(applyTheme);
+    if (typeof document.startViewTransition === 'function') {
+      document.startViewTransition(applyTheme);
+      return;
+    }
+
+    root.classList.add('theme-color-transition');
+    applyTheme();
+
+    window.clearTimeout(fallbackTransitionTimeout.current);
+    fallbackTransitionTimeout.current = window.setTimeout(() => {
+      root.classList.remove('theme-color-transition');
+      fallbackTransitionTimeout.current = null;
+    }, 350);
   };
 
   return (

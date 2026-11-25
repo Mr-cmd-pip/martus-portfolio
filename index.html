@@ -7,18 +7,19 @@
     <meta name="theme-color" content="#0A0A0A" />
     <script>
       (() => {
-        let theme = 'dark';
+        let savedTheme = null;
         try {
-          const savedTheme = localStorage.getItem('portfolio-theme');
-          theme =
-            savedTheme === 'light' || savedTheme === 'dark'
-              ? savedTheme
-              : matchMedia('(prefers-color-scheme: light)').matches
-                ? 'light'
-                : 'dark';
+          savedTheme = localStorage.getItem('portfolio-theme');
         } catch (error) {
           console.warn('Unable to read the saved theme preference.', error);
         }
+
+        const theme =
+          savedTheme === 'light' || savedTheme === 'dark'
+            ? savedTheme
+            : matchMedia('(prefers-color-scheme: light)').matches
+              ? 'light'
+              : 'dark';
 
         document.documentElement.dataset.theme = theme;
         document.querySelector('meta[name="theme-color"]').content =

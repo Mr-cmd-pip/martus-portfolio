@@ -272,13 +272,28 @@
 
 .theme-toggle {
   position: relative;
+  transition:
+    background-color 180ms ease,
+    border-color 180ms ease,
+    color 180ms ease,
+    box-shadow 180ms ease,
+    transform 180ms ease;
+}
+
+.theme-toggle:hover {
+  box-shadow: 0 0 0 3px rgb(100 123 255 / 0.1);
+  transform: scale(1.04);
+}
+
+.theme-toggle:active {
+  transform: scale(0.96);
 }
 
 .theme-icon {
   position: absolute;
   transition:
-    opacity 240ms cubic-bezier(0.2, 0.8, 0.2, 1),
-    transform 420ms cubic-bezier(0.22, 1, 0.36, 1);
+    opacity 300ms cubic-bezier(0.4, 0, 0.2, 1),
+    transform 300ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .theme-icon-sun {
@@ -301,29 +316,58 @@
   transform: rotate(0) scale(1);
 }
 
+.theme-color-transition,
+.theme-color-transition body,
+.theme-color-transition body * {
+  transition-property: background-color, color, border-color, fill, stroke;
+  transition-duration: 350ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.theme-color-transition .theme-icon {
+  transition:
+    opacity 300ms cubic-bezier(0.4, 0, 0.2, 1),
+    transform 300ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
 @supports (view-transition-name: root) {
   ::view-transition-old(root) {
     animation: none;
   }
 
   ::view-transition-new(root) {
-    animation: theme-ripple 1000ms cubic-bezier(0.22, 1, 0.36, 1) both;
+    animation: theme-ripple 620ms cubic-bezier(0.4, 0, 0.2, 1) both;
   }
 
   @keyframes theme-ripple {
     from {
       clip-path: circle(0 at var(--theme-origin-x, 50%) var(--theme-origin-y, 50%));
+      opacity: 0.96;
     }
 
     to {
       clip-path: circle(150vmax at var(--theme-origin-x, 50%) var(--theme-origin-y, 50%));
+      opacity: 1;
     }
   }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .theme-icon {
+  .theme-icon,
+  .theme-toggle {
     transition: none;
+  }
+
+  .theme-toggle:hover,
+  .theme-toggle:active {
+    box-shadow: none;
+    transform: none;
+  }
+
+  .theme-color-transition,
+  .theme-color-transition body,
+  .theme-color-transition body * {
+    transition-duration: 1ms;
   }
 
   ::view-transition-new(root) {
