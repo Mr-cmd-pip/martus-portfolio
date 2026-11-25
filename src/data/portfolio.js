@@ -102,10 +102,8 @@ export const siteData = {
       stack: ['SRS / SDD', 'Project Management'],
       // TODO: Add GitHub repository URL if public
       repos: [],
-      // TODO: Add screenshot in public/images/projects/japlearn.png and set path below
-      screenshot: null,
+      screenshot: '/images/projects/japlearn.png',
       screenshotAlt: 'Japlearn 2.0 platform screenshot',
-      screenshotSlotHint: 'public/images/projects/japlearn.png',
       liveLinks: [
         {
           label: 'Student Portal',
@@ -154,10 +152,8 @@ export const siteData = {
           url: 'https://github.com/Mr-cmd-pip/mangadex-reader',
         },
       ],
-      // TODO: Add screenshot in public/images/projects/mangadex-reader.png and set path below
-      screenshot: null,
+      screenshot: '/images/projects/mangadex-reader.png',
       screenshotAlt: 'mangadex-reader application screenshot',
-      screenshotSlotHint: 'public/images/projects/mangadex-reader.png',
       // TODO: Add live demo URL if deployed
       liveLinks: [],
     },
