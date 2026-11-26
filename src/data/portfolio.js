@@ -29,8 +29,8 @@ export const siteData = {
     heading: 'Matthew Martus.',
     subtitle:
       'Fourth-year BS Information Technology student at Cebu Institute of Technology – University. I build web apps and Discord bots, and I am open to UI/UX Design, Project Management, or Software Developer internships.',
-    tagline: 'I have no special talents. I am only passionately curious.',
-    taglineSource: 'GitHub bio',
+    // TODO: Add 2–3 true, verifiable proof points as { label, value } entries.
+    highlights: [],
     primaryCta: {
       label: 'View projects',
       href: '#projects',
@@ -39,7 +39,7 @@ export const siteData = {
       label: 'Get in touch',
       href: '#contact',
     },
-    // TODO: Add your resume PDF in public/ (e.g. '/Matthew_Martus_Resume.pdf') to surface a resume link
+    // TODO: Add the resume PDF path when it is available.
     resumeUrl: null,
   },
 
@@ -117,8 +117,7 @@ export const siteData = {
     {
       id: 'klase',
       title: 'Klase',
-      // TODO: Replace with your specific role title if desired (e.g. 'UI/UX Designer & Developer')
-      role: 'Team Project',
+      role: 'Documentation Lead & UI/UX Designer',
       roleNote: 'Requirements, ERD, Gantt chart, Figma UI/UX design',
       description:
         'Learning management system with course management, enrollment, assignment submission, and discussion forums.',
@@ -138,8 +137,7 @@ export const siteData = {
     {
       id: 'mangadex-reader',
       title: 'mangadex-reader',
-      // TODO: Confirm or adjust role label if needed
-      role: 'Developer',
+      role: 'Solo Project',
       roleNote: 'Home, series, and chapter-reader pages',
       description:
         'Responsive manga, manhua, and manhwa reader on the MangaDex API with home, series, and chapter-reader pages.',
@@ -162,8 +160,7 @@ export const siteData = {
     {
       id: 'digihealth',
       title: 'DigiHealth',
-      // TODO: Replace with your specific role title if desired
-      role: 'Team Project',
+      role: 'Developer',
       roleNote: 'Patient Android app & staff web dashboard',
       description:
         'Clinic appointment system where patients book through an Android app and staff manage records on a web dashboard.',
@@ -183,8 +180,7 @@ export const siteData = {
     {
       id: 'discord-bots',
       title: 'Discord Bots',
-      // TODO: Confirm or adjust role label if needed
-      role: 'Developer',
+      role: 'Solo Project',
       roleNote: 'Modular utility bot & AFK voice bot',
       description:
         'A modular bot (music, moderation, welcome, general commands) and an AFK voice bot with independent connections per server.',

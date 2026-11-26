@@ -7,45 +7,41 @@ export default function ProjectCard({ project, index }) {
   const hasLinks = repos.length > 0 || liveLinks.length > 0;
 
   return (
-    <article className="group grid overflow-hidden rounded-2xl border border-[#1E1E1E] bg-[#111111] transition-colors duration-150 hover:border-[#333333] lg:grid-cols-12">
+    <article className="group grid overflow-hidden rounded-2xl border border-card bg-surface transition-colors duration-150 hover:border-stronger lg:grid-cols-12">
       {/* Screenshot slot (16:10) */}
-      <div className="relative aspect-[16/10] w-full overflow-hidden border-b border-[#1E1E1E] bg-[#0D0D0D] lg:col-span-7 lg:aspect-auto lg:min-h-[380px] lg:border-r lg:border-b-0">
-        {project.screenshot ? (
+      {project.screenshot && (
+        <div className="relative aspect-[16/10] w-full overflow-hidden border-b border-card bg-media lg:col-span-7 lg:aspect-auto lg:min-h-[380px] lg:border-r lg:border-b-0">
           <img
             src={project.screenshot}
             alt={project.screenshotAlt}
             loading="lazy"
             className="h-full w-full object-cover"
           />
-        ) : (
-          <div className="flex h-full w-full items-center justify-center bg-[#0D0D0D] px-6 py-12 text-center">
-            <p className="text-xs text-[#929292]">No project preview available</p>
-          </div>
-        )}
-      </div>
+        </div>
+      )}
 
       {/* Card body */}
-      <div className="flex flex-col p-6 sm:p-8 lg:col-span-5 lg:p-9">
+      <div className={`flex flex-col p-6 sm:p-8 lg:p-9 ${project.screenshot ? 'lg:col-span-5' : 'lg:col-span-12'}`}>
         <div className="flex items-center gap-2.5">
-          <span className="font-mono text-xs text-[#647BFF]">
+          <span className="font-mono text-xs text-accent">
             {formattedIndex}
           </span>
-          <span className="text-xs font-medium text-[#929292]">
+          <span className="text-xs font-medium text-muted">
             {project.role}
           </span>
         </div>
 
-        <h3 className="mt-4 font-display text-2xl font-semibold tracking-tight text-[#F5F5F5] sm:text-3xl">
+        <h3 className="mt-4 font-display text-2xl font-semibold tracking-tight text-ink sm:text-3xl">
           {project.title}
         </h3>
 
         {project.roleNote && (
-          <p className="mt-1.5 text-xs font-medium text-[#929292]/90">
+          <p className="mt-1.5 text-xs font-medium text-muted-soft">
             {project.roleNote}
           </p>
         )}
 
-        <p className="mt-4 text-sm leading-relaxed text-[#929292] sm:text-[0.9375rem]">
+        <p className="mt-4 text-sm leading-relaxed text-muted sm:text-[0.9375rem]">
           {project.description}
         </p>
 
@@ -59,7 +55,7 @@ export default function ProjectCard({ project, index }) {
             {project.stack.map((tech) => (
               <li
                 key={tech}
-                className="rounded-md border border-[#222222] bg-[#161616] px-2.5 py-1 font-mono text-xs text-[#D4D4D4]"
+                className="rounded-md border border-chip bg-surface-raised px-2.5 py-1 font-mono text-xs text-ink-soft"
               >
                 {tech}
               </li>
@@ -70,7 +66,7 @@ export default function ProjectCard({ project, index }) {
         {/* Repository & live link(s) */}
         {hasLinks && (
           <div className="mt-auto pt-8">
-            <div className="border-t border-[#1B1B1B] pt-5">
+            <div className="border-t border-line-soft pt-5">
               <div className="flex flex-wrap items-center gap-5">
                 {liveLinks.map((link) => (
                   <a
@@ -79,10 +75,10 @@ export default function ProjectCard({ project, index }) {
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label={`Open ${project.title} ${link.label}`}
-                    className="inline-flex min-h-10 items-center gap-1.5 text-sm font-medium text-[#F5F5F5] transition-colors hover:text-[#647BFF]"
+                    className="inline-flex min-h-10 items-center gap-1.5 text-sm font-medium text-ink transition-colors hover:text-accent"
                   >
                     <span>{link.label}</span>
-                    <ArrowUpRight className="h-4 w-4 text-[#929292]" aria-hidden="true" />
+                    <ArrowUpRight className="h-4 w-4 text-muted" aria-hidden="true" />
                   </a>
                 ))}
                 {repos.map((repo) => (
@@ -92,10 +88,10 @@ export default function ProjectCard({ project, index }) {
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label={`View ${project.title} ${repo.label} repository on GitHub`}
-                    className="inline-flex min-h-10 items-center gap-1.5 text-sm font-medium text-[#F5F5F5] transition-colors hover:text-[#647BFF]"
+                    className="inline-flex min-h-10 items-center gap-1.5 text-sm font-medium text-ink transition-colors hover:text-accent"
                   >
                     <span>{repo.label}</span>
-                    <ArrowUpRight className="h-4 w-4 text-[#929292]" aria-hidden="true" />
+                    <ArrowUpRight className="h-4 w-4 text-muted" aria-hidden="true" />
                   </a>
                 ))}
               </div>

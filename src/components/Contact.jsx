@@ -28,23 +28,23 @@ export default function Contact() {
         <div className="grid gap-12 lg:grid-cols-12 lg:gap-16">
           <div className="lg:col-span-7">
             <Reveal>
-              <p className="text-xs font-medium text-[#929292]">
+              <p className="text-xs font-medium text-muted">
                 {contact.eyebrow}
               </p>
               <h2
                 id="contact-heading"
-                className="mt-3 font-display text-3xl font-semibold leading-tight text-[#F5F5F5] sm:text-5xl"
+                className="mt-3 font-display text-3xl font-semibold leading-tight text-ink sm:text-5xl"
               >
                 {contact.heading}
               </h2>
-              <p className="mt-5 max-w-xl text-base leading-relaxed text-[#929292] sm:text-lg">
+              <p className="mt-5 max-w-xl text-base leading-relaxed text-muted sm:text-lg">
                 {contact.description}
               </p>
 
               <div className="mt-8 flex flex-wrap items-center gap-3">
                 <a
                   href={`mailto:${contact.email}`}
-                  className="inline-flex min-h-12 items-center gap-2.5 rounded-lg bg-[#F5F5F5] px-5 py-3 text-sm font-semibold text-[#0A0A0A] transition-colors duration-150 hover:bg-[#647BFF] hover:text-[#0A0A0A] active:scale-[0.98]"
+                  className="inline-flex min-h-12 items-center gap-2.5 rounded-lg bg-ink px-5 py-3 text-sm font-semibold text-on-ink transition-colors duration-150 hover:bg-accent hover:text-on-ink active:scale-[0.98]"
                 >
                   <Mail className="h-4 w-4" aria-hidden="true" />
                   <span>{contact.email}</span>
@@ -53,16 +53,16 @@ export default function Contact() {
                 <button
                   type="button"
                   onClick={handleCopyEmail}
-                  className="inline-flex min-h-12 items-center gap-2 rounded-lg border border-[#262626] bg-[#111111] px-4 py-3 text-sm font-medium text-[#F5F5F5] transition-colors hover:border-[#333333]"
+                  className="inline-flex min-h-12 items-center gap-2 rounded-lg border border-strong bg-surface px-4 py-3 text-sm font-medium text-ink transition-colors hover:border-stronger"
                 >
                   {copied ? (
                     <>
-                      <Check className="h-4 w-4 text-[#647BFF]" aria-hidden="true" />
+                      <Check className="h-4 w-4 text-accent" aria-hidden="true" />
                       <span>Copied</span>
                     </>
                   ) : (
                     <>
-                      <Copy className="h-4 w-4 text-[#929292]" aria-hidden="true" />
+                      <Copy className="h-4 w-4 text-muted" aria-hidden="true" />
                       <span>Copy email</span>
                     </>
                   )}
@@ -78,12 +78,12 @@ export default function Contact() {
 
           <div className="lg:col-span-5 lg:pt-8">
             <Reveal delay={0.08}>
-              <h3 className="text-xs font-medium text-[#929292]">
+              <h3 className="text-xs font-medium text-muted">
                 Elsewhere
               </h3>
               <ul
                 role="list"
-                className="mt-4 divide-y divide-[#1A1A1A] border-y border-[#1A1A1A]"
+                className="mt-4 divide-y divide-line border-y border-line"
               >
                 {contact.socials.map((social) => (
                   <li key={social.name}>
@@ -94,15 +94,15 @@ export default function Contact() {
                       className="group flex min-h-14 items-center justify-between py-3 transition-colors"
                     >
                       <div>
-                        <span className="block text-sm font-medium text-[#F5F5F5] transition-colors group-hover:text-[#647BFF]">
+                        <span className="block text-sm font-medium text-ink transition-colors group-hover:text-accent">
                           {social.name}
                         </span>
-                        <span className="block font-mono text-xs text-[#929292]">
+                        <span className="block font-mono text-xs text-muted">
                           {social.handle}
                         </span>
                       </div>
                       <ArrowUpRight
-                        className="h-4 w-4 text-[#929292]"
+                        className="h-4 w-4 text-muted"
                         aria-hidden="true"
                       />
                     </a>

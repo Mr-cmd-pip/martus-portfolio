@@ -4,6 +4,9 @@ node_modules/
 # Build output
 dist/
 
+# Agent configuration
+.agents/
+
 # Environment variables
 .env
 .env.local

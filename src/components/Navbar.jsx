@@ -8,6 +8,7 @@ export default function Navbar({ theme, onThemeToggle }) {
   const [menuOpen, setMenuOpen] = useState(false);
   const toggleBtnRef = useRef(null);
   const firstMobileLinkRef = useRef(null);
+  const mobileNavRef = useRef(null);
 
   useEffect(() => {
     const sectionIds = siteData.navLinks.map((item) => item.id);
@@ -42,10 +43,25 @@ export default function Navbar({ theme, onThemeToggle }) {
       }
     };
 
+    const handlePointerDown = (event) => {
+      if (
+        mobileNavRef.current?.contains(event.target) ||
+        toggleBtnRef.current?.contains(event.target)
+      ) {
+        return;
+      }
+
+      setMenuOpen(false);
+    };
+
     document.addEventListener('keydown', handleKeyDown);
+    document.addEventListener('pointerdown', handlePointerDown);
     firstMobileLinkRef.current?.focus();
 
-    return () => document.removeEventListener('keydown', handleKeyDown);
+    return () => {
+      document.removeEventListener('keydown', handleKeyDown);
+      document.removeEventListener('pointerdown', handlePointerDown);
+    };
   }, [menuOpen]);
 
   const handleMobileClose = () => {
@@ -53,7 +69,7 @@ export default function Navbar({ theme, onThemeToggle }) {
   };
 
   return (
-    <header className="sticky top-0 z-40 border-b border-[#1A1A1A] bg-[#0A0A0A]/90 backdrop-blur-md">
+    <header className="sticky top-0 z-40 border-b border-line bg-canvas/90 backdrop-blur-md">
       <a href="#main-content" className="skip-link">
         Skip to content
       </a>
@@ -61,10 +77,10 @@ export default function Navbar({ theme, onThemeToggle }) {
       <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-6 sm:px-8">
         <a
           href="#top"
-          className="font-display text-base font-semibold tracking-tight text-[#F5F5F5] transition-colors hover:text-[#647BFF]"
+          className="font-display text-base font-semibold tracking-tight text-ink transition-colors hover:text-accent"
         >
           {siteData.brand.name}
-          <span className="text-[#647BFF]" aria-hidden="true">
+          <span className="text-accent" aria-hidden="true">
             .
           </span>
         </a>
@@ -81,14 +97,14 @@ export default function Navbar({ theme, onThemeToggle }) {
                     aria-current={isCurrent ? 'true' : undefined}
                     className={`group relative inline-flex flex-col py-2 text-sm font-medium transition-colors duration-150 ${
                       isCurrent
-                        ? 'is-current text-[#F5F5F5]'
-                        : 'text-[#929292] hover:text-[#F5F5F5]'
+                        ? 'is-current text-ink'
+                        : 'text-muted hover:text-ink'
                     }`}
                   >
                     <span>{link.label}</span>
                     <span
                       aria-hidden="true"
-                      className={`nav-indicator absolute inset-x-0 -bottom-0.5 h-[2px] origin-left rounded-full bg-[#647BFF] transition-[transform,opacity] duration-200 ${
+                      className={`nav-indicator absolute inset-x-0 -bottom-0.5 h-[2px] origin-left rounded-full bg-accent transition-[transform,opacity] duration-200 ${
                         isCurrent
                           ? 'scale-x-100 opacity-100'
                           : 'scale-x-0 opacity-0 group-hover:scale-x-100 group-hover:opacity-60'
@@ -107,7 +123,7 @@ export default function Navbar({ theme, onThemeToggle }) {
           aria-label="Light theme"
           aria-pressed={theme === 'light'}
           title={`Switch to ${theme === 'dark' ? 'light' : 'dark'} mode`}
-          className="theme-toggle inline-flex min-h-11 min-w-11 items-center justify-center rounded-full border border-[#1F1F1F] bg-[#111111] text-[#F5F5F5] transition-colors hover:border-[#647BFF]/60"
+          className="theme-toggle inline-flex min-h-11 min-w-11 items-center justify-center rounded-full border border-control bg-surface text-ink transition-colors hover:border-accent/60"
         >
           <Sun className="theme-icon theme-icon-sun h-5 w-5" aria-hidden="true" />
           <Moon className="theme-icon theme-icon-moon h-5 w-5" aria-hidden="true" />
@@ -121,7 +137,7 @@ export default function Navbar({ theme, onThemeToggle }) {
           aria-expanded={menuOpen}
           aria-controls="mobile-navigation"
           aria-label={menuOpen ? 'Close navigation menu' : 'Open navigation menu'}
-          className="inline-flex min-h-11 min-w-11 items-center justify-center rounded-lg border border-[#1F1F1F] bg-[#111111] text-[#F5F5F5] transition-colors hover:border-[#647BFF]/60 md:hidden"
+          className="inline-flex min-h-11 min-w-11 items-center justify-center rounded-lg border border-control bg-surface text-ink transition-colors hover:border-accent/60 md:hidden"
         >
           {menuOpen ? <X className="h-5 w-5" aria-hidden="true" /> : <Menu className="h-5 w-5" aria-hidden="true" />}
         </button>
@@ -130,9 +146,10 @@ export default function Navbar({ theme, onThemeToggle }) {
       {/* Mobile navigation drawer */}
       {menuOpen && (
         <nav
+          ref={mobileNavRef}
           id="mobile-navigation"
           aria-label="Mobile"
-          className="border-t border-[#1A1A1A] bg-[#0A0A0A] px-6 py-4 md:hidden"
+          className="border-t border-line bg-canvas px-6 py-4 md:hidden"
         >
           <ul className="flex flex-col gap-1">
             {siteData.navLinks.map((link, index) => {
@@ -146,15 +163,15 @@ export default function Navbar({ theme, onThemeToggle }) {
                     aria-current={isCurrent ? 'true' : undefined}
                     className={`flex min-h-11 items-center justify-between rounded-lg px-3 py-2 text-base font-medium transition-colors ${
                       isCurrent
-                        ? 'bg-[#141414] text-[#F5F5F5]'
-                        : 'text-[#929292] hover:bg-[#121212] hover:text-[#F5F5F5]'
+                        ? 'bg-surface-active text-ink'
+                        : 'text-muted hover:bg-surface-soft hover:text-ink'
                     }`}
                   >
                     <span>{link.label}</span>
                     {isCurrent && (
                       <span
                         aria-hidden="true"
-                        className="h-1.5 w-1.5 rounded-full bg-[#647BFF]"
+                        className="h-1.5 w-1.5 rounded-full bg-accent"
                       />
                     )}
                   </a>

@@ -7,6 +7,8 @@
     <meta name="theme-color" content="#0A0A0A" />
     <script>
       (() => {
+        if (typeof window === 'undefined' || typeof document === 'undefined') return;
+
         let savedTheme = null;
         try {
           savedTheme = localStorage.getItem('portfolio-theme');
@@ -17,7 +19,7 @@
         const theme =
           savedTheme === 'light' || savedTheme === 'dark'
             ? savedTheme
-            : matchMedia('(prefers-color-scheme: light)').matches
+            : window.matchMedia?.('(prefers-color-scheme: light)').matches
               ? 'light'
               : 'dark';
 
@@ -33,22 +35,18 @@
       content="Portfolio of Matthew Rimar Martus, a fourth-year BS Information Technology student at Cebu Institute of Technology – University. Open to UI/UX Design, Project Management, and Software Developer internships."
     />
     <meta name="author" content="Matthew Rimar Martus" />
-    <meta
-      name="keywords"
-      content="Matthew Martus, Matthew Rimar Martus, CIT-U, Web Developer, UI/UX Design, Project Management, React, Django, Portfolio"
-    />
 
-    <!-- Canonical & Open Graph -->
-    <!-- TODO: Replace og:url and og:image domain with your deployed URL (e.g., https://matthewmartus.vercel.app) -->
+    <link rel="canonical" href="https://martus-portfolio.vercel.app/" />
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="Matthew Martus" />
+    <meta property="og:locale" content="en_US" />
     <meta property="og:title" content="Matthew Martus — IT Student, Developer &amp; Project Manager" />
     <meta
       property="og:description"
       content="Fourth-year BSIT student at CIT-U building web apps and Discord bots. Open to UI/UX Design, Project Management, or Software Developer internships."
     />
-    <meta property="og:url" content="https://example.com" />
-    <meta property="og:image" content="/og-preview.png" />
+    <meta property="og:url" content="https://martus-portfolio.vercel.app/" />
+    <meta property="og:image" content="https://martus-portfolio.vercel.app/og-preview.png" />
     <meta property="og:image:alt" content="Matthew Martus portfolio preview" />
 
     <!-- Twitter / X Card -->
@@ -58,21 +56,43 @@
       name="twitter:description"
       content="Fourth-year BSIT student at CIT-U building web apps and Discord bots. Open to internships and web project collaborations."
     />
-    <meta name="twitter:image" content="/og-preview.png" />
+    <meta name="twitter:image" content="https://martus-portfolio.vercel.app/og-preview.png" />
 
     <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-
-    <!-- Fonts: Manrope (headings), Inter (body), JetBrains Mono (technical labels) -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Manrope:wght@500;600;700;800&display=swap"
-      rel="stylesheet"
-    />
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Matthew Rimar Martus",
+        "url": "https://martus-portfolio.vercel.app/",
+        "jobTitle": "IT Student",
+        "alumniOf": {
+          "@type": "EducationalOrganization",
+          "name": "Cebu Institute of Technology – University"
+        }
+      }
+    </script>
   </head>
-  <body class="bg-[#0A0A0A] text-[#F5F5F5] antialiased selection:bg-[#647BFF]/30 selection:text-[#F5F5F5]">
+  <body class="bg-canvas text-ink antialiased selection:bg-accent/30 selection:text-ink">
     <div id="root"></div>
+    <noscript>
+      <section>
+        <h1>Matthew Rimar Martus</h1>
+        <p>IT Student at Cebu Institute of Technology – University</p>
+        <p>
+          Fourth-year BS Information Technology student at Cebu Institute of Technology – University.
+          I build web apps and Discord bots, and I am open to UI/UX Design, Project Management,
+          or Software Developer internships.
+        </p>
+        <p>
+          <a href="mailto:matthewrimar1102@gmail.com">Email</a>
+          <a href="https://github.com/Mr-cmd-pip">GitHub</a>
+          <a href="https://www.linkedin.com/in/matthew-rimar-martus-m0203/">LinkedIn</a>
+        </p>
+        <!-- Add a resume link here when hero.resumeUrl is available in src/data/portfolio.js. -->
+      </section>
+    </noscript>
     <script type="module" src="/src/main.jsx"></script>
   </body>
 </html>
