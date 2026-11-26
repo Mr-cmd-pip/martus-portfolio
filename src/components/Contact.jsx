@@ -28,7 +28,7 @@ export default function Contact() {
         <div className="grid gap-12 lg:grid-cols-12 lg:gap-16">
           <div className="lg:col-span-7">
             <Reveal>
-              <p className="font-mono text-xs uppercase tracking-[0.16em] text-[#647BFF]">
+              <p className="text-xs font-medium text-[#929292]">
                 {contact.eyebrow}
               </p>
               <h2
@@ -44,7 +44,7 @@ export default function Contact() {
               <div className="mt-8 flex flex-wrap items-center gap-3">
                 <a
                   href={`mailto:${contact.email}`}
-                  className="inline-flex min-h-12 items-center gap-2.5 rounded-lg bg-[#F5F5F5] px-5 py-3 text-sm font-semibold text-[#0A0A0A] transition-all duration-150 hover:-translate-y-0.5 hover:bg-[#647BFF] hover:text-[#0A0A0A] active:translate-y-0"
+                  className="inline-flex min-h-12 items-center gap-2.5 rounded-lg bg-[#F5F5F5] px-5 py-3 text-sm font-semibold text-[#0A0A0A] transition-colors duration-150 hover:bg-[#647BFF] hover:text-[#0A0A0A] active:scale-[0.98]"
                 >
                   <Mail className="h-4 w-4" aria-hidden="true" />
                   <span>{contact.email}</span>
@@ -53,7 +53,7 @@ export default function Contact() {
                 <button
                   type="button"
                   onClick={handleCopyEmail}
-                  className="inline-flex min-h-12 items-center gap-2 rounded-lg border border-[#262626] bg-[#111111] px-4 py-3 text-sm font-medium text-[#F5F5F5] transition-colors hover:border-[#647BFF]/70"
+                  className="inline-flex min-h-12 items-center gap-2 rounded-lg border border-[#262626] bg-[#111111] px-4 py-3 text-sm font-medium text-[#F5F5F5] transition-colors hover:border-[#333333]"
                 >
                   {copied ? (
                     <>
@@ -78,7 +78,7 @@ export default function Contact() {
 
           <div className="lg:col-span-5 lg:pt-8">
             <Reveal delay={0.08}>
-              <h3 className="font-mono text-xs uppercase tracking-[0.16em] text-[#929292]">
+              <h3 className="text-xs font-medium text-[#929292]">
                 Elsewhere
               </h3>
               <ul
@@ -102,7 +102,7 @@ export default function Contact() {
                         </span>
                       </div>
                       <ArrowUpRight
-                        className="h-4 w-4 text-[#929292] transition-transform duration-150 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:text-[#647BFF]"
+                        className="h-4 w-4 text-[#929292]"
                         aria-hidden="true"
                       />
                     </a>

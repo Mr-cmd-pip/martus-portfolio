@@ -102,28 +102,6 @@
   top: 1rem;
 }
 
-/* Native CSS scrollspy with safe IntersectionObserver fallback class */
-.nav-links {
-  scroll-target-group: auto;
-}
-
-.nav-links a:is(:target-current, .is-current) {
-  color: #F5F5F5;
-}
-
-.nav-links a:is(:target-current, .is-current) .nav-indicator {
-  opacity: 1;
-  transform: scaleX(1);
-}
-
-/* Subtle architectural grid background for empty screenshot slots */
-.slot-grid {
-  background-image:
-    linear-gradient(to right, rgb(255 255 255 / 0.03) 1px, transparent 1px),
-    linear-gradient(to bottom, rgb(255 255 255 / 0.03) 1px, transparent 1px);
-  background-size: 28px 28px;
-}
-
 /* Respect reduced motion for all CSS transitions */
 @media (prefers-reduced-motion: reduce) {
   .motion-safe-only {
@@ -276,17 +254,15 @@
     background-color 180ms ease,
     border-color 180ms ease,
     color 180ms ease,
-    box-shadow 180ms ease,
     transform 180ms ease;
 }
 
 .theme-toggle:hover {
-  box-shadow: 0 0 0 3px rgb(100 123 255 / 0.1);
-  transform: scale(1.04);
+  border-color: #333333;
 }
 
 .theme-toggle:active {
-  transform: scale(0.96);
+  transform: scale(0.98);
 }
 
 .theme-icon {
@@ -360,7 +336,6 @@
 
   .theme-toggle:hover,
   .theme-toggle:active {
-    box-shadow: none;
     transform: none;
   }
 

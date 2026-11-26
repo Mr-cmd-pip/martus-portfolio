@@ -2,10 +2,7 @@ import { useEffect, useRef, useState } from 'react';
 import { Menu, Moon, Sun, X } from 'lucide-react';
 import { siteData } from '../data/portfolio';
 
-/**
- * Sticky minimal navigation with native CSS scrollspy (`scroll-target-group`)
- * paired with an IntersectionObserver fallback for cross-browser `aria-current`.
- */
+/** Sticky navigation with IntersectionObserver-based scrollspy. */
 export default function Navbar({ theme, onThemeToggle }) {
   const [activeId, setActiveId] = useState('');
   const [menuOpen, setMenuOpen] = useState(false);
@@ -74,7 +71,7 @@ export default function Navbar({ theme, onThemeToggle }) {
 
         {/* Desktop navigation */}
         <nav aria-label="Primary" className="hidden md:block">
-          <ul className="nav-links flex items-center gap-7">
+          <ul className="flex items-center gap-7">
             {siteData.navLinks.map((link) => {
               const isCurrent = activeId === link.id;
               return (
@@ -91,7 +88,7 @@ export default function Navbar({ theme, onThemeToggle }) {
                     <span>{link.label}</span>
                     <span
                       aria-hidden="true"
-                      className={`nav-indicator absolute inset-x-0 -bottom-0.5 h-[2px] origin-left rounded-full bg-[#647BFF] transition-all duration-200 ${
+                      className={`nav-indicator absolute inset-x-0 -bottom-0.5 h-[2px] origin-left rounded-full bg-[#647BFF] transition-[transform,opacity] duration-200 ${
                         isCurrent
                           ? 'scale-x-100 opacity-100'
                           : 'scale-x-0 opacity-0 group-hover:scale-x-100 group-hover:opacity-60'

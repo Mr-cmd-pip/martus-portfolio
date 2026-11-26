@@ -88,7 +88,6 @@ export const siteData = {
       // TODO: Add screenshot in public/images/projects/mentalease.png and set path below
       screenshot: null,
       screenshotAlt: 'MentalEase web application screenshot',
-      screenshotSlotHint: 'public/images/projects/mentalease.png',
       // TODO: Add live demo URL(s) if deployed
       liveLinks: [],
     },
@@ -133,7 +132,6 @@ export const siteData = {
       // TODO: Add screenshot in public/images/projects/klase.png and set path below
       screenshot: null,
       screenshotAlt: 'Klase learning management system screenshot',
-      screenshotSlotHint: 'public/images/projects/klase.png',
       // TODO: Add Figma prototype or live URL if available
       liveLinks: [],
     },
@@ -179,7 +177,6 @@ export const siteData = {
       // TODO: Add screenshot in public/images/projects/digihealth.png and set path below
       screenshot: null,
       screenshotAlt: 'DigiHealth clinic appointment system screenshot',
-      screenshotSlotHint: 'public/images/projects/digihealth.png',
       // TODO: Add live demo URL if deployed
       liveLinks: [],
     },
@@ -205,7 +202,6 @@ export const siteData = {
       // TODO: Add screenshot in public/images/projects/discord-bots.png and set path below
       screenshot: null,
       screenshotAlt: 'Discord Bots showcase screenshot',
-      screenshotSlotHint: 'public/images/projects/discord-bots.png',
       liveLinks: [],
     },
   ],

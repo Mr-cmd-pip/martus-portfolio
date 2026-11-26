@@ -286,8 +286,8 @@ export default function Projects() {
         <Reveal>
           <div className="flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between">
             <div>
-              <p className="font-mono text-xs uppercase tracking-[0.16em] text-[#647BFF]">
-                Selected Work
+              <p className="text-xs font-medium text-[#929292]">
+                Selected work
               </p>
               <h2
                 id="projects-heading"
@@ -382,10 +382,10 @@ export default function Projects() {
                   >
                     <span
                       aria-hidden="true"
-                      className={`block h-2 rounded-full transition-all duration-200 ${
+                      className={`block h-2 w-7 rounded-full transition-[transform,background-color] duration-150 ${
                         isActive
-                          ? 'w-7 bg-[#647BFF] ring-1 ring-[#647BFF]/50 ring-offset-2 ring-offset-[#0A0A0A]'
-                          : 'w-2 bg-[#333333] group-hover:bg-[#929292]'
+                          ? 'scale-x-100 bg-[#647BFF] ring-1 ring-[#647BFF]/50 ring-offset-2 ring-offset-[#0A0A0A]'
+                          : 'scale-x-[0.2857] bg-[#333333] group-hover:bg-[#929292]'
                       }`}
                     />
                   </button>

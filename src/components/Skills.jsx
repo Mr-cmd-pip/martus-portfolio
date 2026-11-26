@@ -12,7 +12,7 @@ export default function Skills() {
       <div className="mx-auto max-w-6xl px-6 sm:px-8">
         <Reveal>
           <div className="max-w-xl">
-            <p className="font-mono text-xs uppercase tracking-[0.16em] text-[#647BFF]">
+            <p className="text-xs font-medium text-[#929292]">
               Toolkit
             </p>
             <h2

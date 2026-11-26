@@ -14,7 +14,7 @@ export default function Certifications() {
         <div className="grid gap-12 lg:grid-cols-12 lg:gap-16">
           <div className="lg:col-span-4">
             <Reveal>
-              <p className="font-mono text-xs uppercase tracking-[0.16em] text-[#647BFF]">
+              <p className="text-xs font-medium text-[#929292]">
                 Learning
               </p>
               <h2
@@ -41,7 +41,7 @@ export default function Certifications() {
                     className="flex flex-col gap-3 py-5 sm:flex-row sm:items-center sm:justify-between"
                   >
                     <div className="flex items-start gap-3.5">
-                      <span className="mt-0.5 flex h-8 w-8 shrink-0 items-center justify-center rounded-lg border border-[#1F1F1F] bg-[#121212] text-[#647BFF]">
+                      <span className="mt-0.5 flex h-8 w-8 shrink-0 items-center justify-center rounded-lg border border-[#1F1F1F] bg-[#121212] text-[#929292]">
                         <Award className="h-4 w-4" aria-hidden="true" />
                       </span>
                       <div>
