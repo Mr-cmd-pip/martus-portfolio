@@ -1,9 +1,9 @@
 import { useEffect, useRef, useState } from 'react';
-import { Menu, Moon, Sun, X } from 'lucide-react';
+import { Menu, X } from 'lucide-react';
 import { siteData } from '../data/portfolio';
 
 /** Sticky navigation with IntersectionObserver-based scrollspy. */
-export default function Navbar({ theme, onThemeToggle }) {
+export default function Navbar() {
   const [activeId, setActiveId] = useState('');
   const [menuOpen, setMenuOpen] = useState(false);
   const toggleBtnRef = useRef(null);
@@ -116,18 +116,6 @@ export default function Navbar({ theme, onThemeToggle }) {
             })}
           </ul>
         </nav>
-
-        <button
-          type="button"
-          onClick={onThemeToggle}
-          aria-label="Light theme"
-          aria-pressed={theme === 'light'}
-          title={`Switch to ${theme === 'dark' ? 'light' : 'dark'} mode`}
-          className="theme-toggle inline-flex min-h-11 min-w-11 items-center justify-center rounded-full border border-control bg-surface text-ink transition-colors hover:border-accent/60"
-        >
-          <Sun className="theme-icon theme-icon-sun h-5 w-5" aria-hidden="true" />
-          <Moon className="theme-icon theme-icon-moon h-5 w-5" aria-hidden="true" />
-        </button>
 
         {/* Mobile menu toggle (min 44x44 target) */}
         <button
