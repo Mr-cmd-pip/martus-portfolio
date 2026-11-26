@@ -47,7 +47,7 @@ export const siteData = {
     eyebrow: 'About',
     heading: 'Building software, coordinating teams, and staying curious.',
     paragraphs: [
-      'I am a fourth-year BS Information Technology student at Cebu Institute of Technology – University in Cebu City, Philippines. Across academic and personal builds, I work on web applications and Discord bots while strengthening my React fundamentals.',
+      'I am a fourth-year BS Information Technology student at Cebu Institute of Technology – University in Cebu City, Philippines. Across academic and personal builds, I work on web applications and Discord bots.',
       'My interests span web development, software development, project management, and game development. Outside coursework, I run Minecraft servers and enjoy tinkering with developer tooling.',
     ],
     focusItems: [
@@ -58,10 +58,6 @@ export const siteData = {
       {
         label: 'Open to collaborating',
         value: 'Web projects and student or community builds',
-      },
-      {
-        label: 'Currently strengthening',
-        value: 'React',
       },
       {
         label: 'Based in',
@@ -225,6 +221,10 @@ export const siteData = {
         'Postman',
         'VS Code',
       ],
+    },
+    {
+      category: 'AI Tools',
+      items: ['Claude', 'Antigravity', 'GitHub Copilot'],
     },
     {
       category: 'Practices',

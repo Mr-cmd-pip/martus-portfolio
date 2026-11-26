@@ -1,6 +1,6 @@
 import { ArrowUpRight } from 'lucide-react';
 
-export default function ProjectCard({ project, index }) {
+export default function ProjectCard({ project, index, headingId }) {
   const formattedIndex = String(index + 1).padStart(2, '0');
   const repos = project.repos ?? [];
   const liveLinks = project.liveLinks ?? [];
@@ -31,7 +31,10 @@ export default function ProjectCard({ project, index }) {
           </span>
         </div>
 
-        <h3 className="mt-4 font-display text-2xl font-semibold tracking-tight text-ink sm:text-3xl">
+        <h3
+          id={headingId}
+          className="mt-4 font-display text-2xl font-semibold tracking-tight text-ink sm:text-3xl"
+        >
           {project.title}
         </h3>
 
