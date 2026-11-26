@@ -39,7 +39,7 @@ export default function Hero() {
           <div className="mt-10 flex flex-wrap items-center gap-4">
             <a
               href={hero.primaryCta.href}
-              className="inline-flex min-h-12 items-center gap-2 rounded-lg bg-ink px-6 py-3 text-sm font-semibold text-on-ink transition-colors duration-150 hover:bg-accent hover:text-on-ink active:scale-[0.98]"
+              className="inline-flex min-h-12 items-center gap-2 rounded-lg bg-ink px-6 py-3 text-sm font-semibold text-canvas transition-colors duration-150 hover:bg-accent active:scale-[0.98]"
             >
               <span>{hero.primaryCta.label}</span>
               <ArrowDownRight className="h-4 w-4" aria-hidden="true" />

@@ -44,7 +44,7 @@ export default function Contact() {
               <div className="mt-8 flex flex-wrap items-center gap-3">
                 <a
                   href={`mailto:${contact.email}`}
-                  className="inline-flex min-h-12 items-center gap-2.5 rounded-lg bg-ink px-5 py-3 text-sm font-semibold text-on-ink transition-colors duration-150 hover:bg-accent hover:text-on-ink active:scale-[0.98]"
+                  className="inline-flex min-h-12 items-center gap-2.5 rounded-lg bg-ink px-5 py-3 text-sm font-semibold text-canvas transition-colors duration-150 hover:bg-accent active:scale-[0.98]"
                 >
                   <Mail className="h-4 w-4" aria-hidden="true" />
                   <span>{contact.email}</span>
